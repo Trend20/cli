@@ -22,6 +22,11 @@ var filesCmd = &cobra.Command{
 }
 
 func init() {
+
+	//flags
+	var Filecount int
+	var Minfilesize int64
+
 	rootCmd.AddCommand(filesCmd)
 
 	// Here you will define your flags and configuration settings.
@@ -33,4 +38,10 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// filesCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	filesCmd.PersistentFlags().IntVarP(&Filecount, "filecount", "f", 10, "Limit the number of files returned")
+	viper.BindPFlag("filecount", filesCmd.PersistentFlags().Lookup("filecount"))
+
+	filesCmd.PersistentFlags().Int64VarP(&Minfilesize, "minfilesize", "", 50, "Minimum size for files in search in MB.")
+	viper.BindPFlag("minfilesize", filesCmd.PersistentFlags().Lookup("minfilesize"))
 }
