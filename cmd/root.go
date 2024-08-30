@@ -39,12 +39,6 @@ func init() {
 	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cli.yaml)")
 
 	//setting flags using viper
-	//rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "Display more verbose output in console output. (default: false)")
-	//viper.BindPFlag("verbose", rootCmd.PersistentFlags().Lookup("verbose"))
-	//
-	//rootCmd.PersistentFlags().BoolVarP(&Debug, "debug", "d", false, "Display debugging output in the console. (default: false)")
-	//viper.BindPFlag("debug", rootCmd.PersistentFlags().Lookup("debug"))
-
 	rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "Display more verbose output in console output. (default: false)")
 	viper.BindPFlag("verbose", rootCmd.PersistentFlags().Lookup("verbose"))
 
