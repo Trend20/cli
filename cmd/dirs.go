@@ -1,10 +1,8 @@
-/*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
 	"fmt"
+	"github.com/spf13/viper"
 
 	"github.com/spf13/cobra"
 )
@@ -25,6 +23,10 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
+	//flags
+	var Depth int
+	var Mindirsize int
+
 	rootCmd.AddCommand(dirsCmd)
 
 	// Here you will define your flags and configuration settings.
@@ -36,4 +38,10 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// dirsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	dirsCmd.PersistentFlags().IntVarP(&Depth, "depth", "", 2, "Depth of directory tree to display")
+	viper.BindPFlag("depth", dirsCmd.PersistentFlags().Lookup("depth"))
+
+	dirsCmd.PersistentFlags().IntVarP(&Mindirsize, "mindirsize", "", 100, "Only display directories larger than this threshold in MB.")
+	viper.BindPFlag("mindirsize", dirsCmd.PersistentFlags().Lookup("mindirsize"))
 }
