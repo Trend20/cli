@@ -1,1 +1,1 @@
-# Building a CLI application using Go
+# A CLI application built using Go.
